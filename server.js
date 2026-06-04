@@ -59,6 +59,7 @@ app.post("/criar-checkout", async (req, res) => {
     const session = await stripe.checkout.sessions.create(params);
     res.json({ url: session.url });
   } catch (err) {
+    console.error("ERRO CRIAR-CHECKOUT:", err);
     res.status(500).json({ error: err.message });
   }
 });
